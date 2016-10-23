@@ -132,9 +132,9 @@
             this.AsyncProgressLbl.AutoSize = true;
             this.AsyncProgressLbl.Location = new System.Drawing.Point(75, 307);
             this.AsyncProgressLbl.Name = "AsyncProgressLbl";
-            this.AsyncProgressLbl.Size = new System.Drawing.Size(77, 17);
+            this.AsyncProgressLbl.Size = new System.Drawing.Size(99, 17);
             this.AsyncProgressLbl.TabIndex = 10;
-            this.AsyncProgressLbl.Text = "Initializing..";
+            this.AsyncProgressLbl.Text = "Currently idle..";
             // 
             // AsyncActionBtn
             // 
