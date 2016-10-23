@@ -35,8 +35,6 @@ namespace CSharp6NewFeatures
 
         #endregion
 
-        #endregion
-
         #region Action Button Click
 
         /// <summary>
@@ -44,9 +42,9 @@ namespace CSharp6NewFeatures
         /// </summary>
         private void ActionBtn_Click(object sender, EventArgs e)
         {
-            string firstString =  String1TxtBox.Text;
+            string firstString = String1TxtBox.Text;
             string secondString = String2TxtBox.Text;
-            string thirdString =  String3TxtBox.Text;
+            string thirdString = String3TxtBox.Text;
 
             try
             {
@@ -54,10 +52,12 @@ namespace CSharp6NewFeatures
                 if (firstString.Contains("XYZ") || secondString.Contains("XYZ") || thirdString.Contains("XYZ"))
                 {
                     throw new Exception(Resource1.sXYZErrorMessage);
-                } else if (firstString.Contains("ABC") || secondString.Contains("ABC") || thirdString.Contains("ABC"))
+                }
+                else if (firstString.Contains("ABC") || secondString.Contains("ABC") || thirdString.Contains("ABC"))
                 {
                     throw new Exception(Resource1.sABCErrorMessage);
-                } else if (firstString.Contains("W00T?") || secondString.Contains("W00T?") || thirdString.Contains("W00T?"))
+                }
+                else if (firstString.Contains("W00T?") || secondString.Contains("W00T?") || thirdString.Contains("W00T?"))
                 {
                     throw new Exception(Resource1.sW00TErrorMessage);
                 }
@@ -65,15 +65,26 @@ namespace CSharp6NewFeatures
                 string resultString = $"{firstString} {secondString} {thirdString}";
                 ResultStringTxtBox.Text = resultString;
             }
-                catch (Exception ex) when (ex.Message.Equals(Resource1.sXYZErrorMessage) || ex.Message.Equals(Resource1.sABCErrorMessage))
+            catch (Exception ex) when (ex.Message.Equals(Resource1.sXYZErrorMessage) || ex.Message.Equals(Resource1.sABCErrorMessage))
             {
                 ResultStringTxtBox.Text = Resource1.sXYZorABCInputDetected;
             }
-                finally
+            finally
             {
                 //do something
             }
         }
+
+        #endregion
+
+        #region Async Operation Btn Click
+
+        private void AsyncActionBtn_Click(object sender, EventArgs e)
+        {
+            //Task.Factory.StartNew(() => );
+        }
+
+        #endregion
 
         #endregion
 

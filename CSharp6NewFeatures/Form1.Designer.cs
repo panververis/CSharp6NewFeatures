@@ -38,6 +38,8 @@
             this.ResultStringTxtBox = new System.Windows.Forms.TextBox();
             this.ResultStringLbl = new System.Windows.Forms.Label();
             this.StringInfoLbl = new System.Windows.Forms.Label();
+            this.AsyncProgressLbl = new System.Windows.Forms.Label();
+            this.AsyncActionBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ActionBtn
@@ -125,11 +127,32 @@
             this.StringInfoLbl.TabIndex = 9;
             this.StringInfoLbl.Text = "Inserting \"ABC\" or \"XYZ\" is not valid. Inserting \"W00T?\" will break it!";
             // 
+            // AsyncProgressLbl
+            // 
+            this.AsyncProgressLbl.AutoSize = true;
+            this.AsyncProgressLbl.Location = new System.Drawing.Point(75, 307);
+            this.AsyncProgressLbl.Name = "AsyncProgressLbl";
+            this.AsyncProgressLbl.Size = new System.Drawing.Size(77, 17);
+            this.AsyncProgressLbl.TabIndex = 10;
+            this.AsyncProgressLbl.Text = "Initializing..";
+            // 
+            // AsyncActionBtn
+            // 
+            this.AsyncActionBtn.Location = new System.Drawing.Point(78, 327);
+            this.AsyncActionBtn.Name = "AsyncActionBtn";
+            this.AsyncActionBtn.Size = new System.Drawing.Size(121, 42);
+            this.AsyncActionBtn.TabIndex = 11;
+            this.AsyncActionBtn.Text = "Commence Async Operation";
+            this.AsyncActionBtn.UseVisualStyleBackColor = true;
+            this.AsyncActionBtn.Click += new System.EventHandler(this.AsyncActionBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 411);
+            this.Controls.Add(this.AsyncActionBtn);
+            this.Controls.Add(this.AsyncProgressLbl);
             this.Controls.Add(this.StringInfoLbl);
             this.Controls.Add(this.ResultStringLbl);
             this.Controls.Add(this.ResultStringTxtBox);
@@ -160,6 +183,8 @@
         private System.Windows.Forms.TextBox ResultStringTxtBox;
         private System.Windows.Forms.Label ResultStringLbl;
         private System.Windows.Forms.Label StringInfoLbl;
+        private System.Windows.Forms.Label AsyncProgressLbl;
+        private System.Windows.Forms.Button AsyncActionBtn;
     }
 }
 
