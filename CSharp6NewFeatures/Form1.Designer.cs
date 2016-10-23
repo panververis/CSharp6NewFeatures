@@ -37,6 +37,7 @@
             this.String3TxtBox = new System.Windows.Forms.TextBox();
             this.ResultStringTxtBox = new System.Windows.Forms.TextBox();
             this.ResultStringLbl = new System.Windows.Forms.Label();
+            this.StringInfoLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ActionBtn
@@ -113,11 +114,23 @@
             this.ResultStringLbl.TabIndex = 8;
             this.ResultStringLbl.Text = "Result String";
             // 
+            // StringInfoLbl
+            // 
+            this.StringInfoLbl.AutoSize = true;
+            this.StringInfoLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.StringInfoLbl.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.StringInfoLbl.Location = new System.Drawing.Point(72, 105);
+            this.StringInfoLbl.Name = "StringInfoLbl";
+            this.StringInfoLbl.Size = new System.Drawing.Size(430, 17);
+            this.StringInfoLbl.TabIndex = 9;
+            this.StringInfoLbl.Text = "Inserting \"ABC\" or \"XYZ\" is not valid. Inserting \"W00T?\" will break it!";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 411);
+            this.Controls.Add(this.StringInfoLbl);
             this.Controls.Add(this.ResultStringLbl);
             this.Controls.Add(this.ResultStringTxtBox);
             this.Controls.Add(this.String3Lbl);
@@ -146,6 +159,7 @@
         private System.Windows.Forms.TextBox String3TxtBox;
         private System.Windows.Forms.TextBox ResultStringTxtBox;
         private System.Windows.Forms.Label ResultStringLbl;
+        private System.Windows.Forms.Label StringInfoLbl;
     }
 }
 
