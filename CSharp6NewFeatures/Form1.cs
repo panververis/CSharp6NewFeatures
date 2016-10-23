@@ -93,24 +93,45 @@ namespace CSharp6NewFeatures
                 return;
             }
             AsyncProgressLbl.Text = "Initializing";
-            _aSyncTask = Task.Run(() => Thread.Sleep(3000));
+            var progress = new Progress<int>(percent =>
+            {
+                if (percent != 100)
+                {
+                    AsyncProgressLbl.Text = percent + "%";
+                } else
+                {
+                    AsyncProgressLbl.Text = "Completed";
+                }
+            });
+            
             try
             {
-                _aSyncTask.Wait(3500);
-                bool completed = _aSyncTask.IsCompleted;
-                AsyncProgressLbl.Text = $"Task A completed: {completed.ToString()}, Status: {_aSyncTask.Status.ToString()}";
-                if (!completed)
-                {
-                    AsyncProgressLbl.Text = $"Task A not completed";
-                }
+                _aSyncTask = new Task(() => DoSomeProcessing(progress));
+                _aSyncTask.Start();
             }
             catch (AggregateException)
             {
-                Console.WriteLine("Exception in taskA.");
+                AsyncProgressLbl.Text = "Exception in Task.";
             }
         }
 
         #endregion
+
+        #endregion
+
+        #region Private / Helper methods
+
+        private void DoSomeProcessing(IProgress<int> progress)
+        {
+            for (int i = 0; i <= 100; ++i)
+            {
+                Thread.Sleep(500);
+                if (progress != null)
+                {
+                    progress.Report(i);
+                }
+            }
+        }
 
         #endregion
 
