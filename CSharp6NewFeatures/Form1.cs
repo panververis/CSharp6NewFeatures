@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static CSharp6NewFeatures.CustomStaticClass;
@@ -13,6 +14,12 @@ namespace CSharp6NewFeatures
 {
     public partial class MainForm : Form
     {
+
+        #region Fields
+
+        Task _aSyncTask { get; set; }
+
+        #endregion
 
         #region Constructor
 
@@ -81,7 +88,26 @@ namespace CSharp6NewFeatures
 
         private void AsyncActionBtn_Click(object sender, EventArgs e)
         {
-            //Task.Factory.StartNew(() => );
+            if (_aSyncTask != null && _aSyncTask.Status == TaskStatus.Running)
+            {
+                return;
+            }
+            AsyncProgressLbl.Text = "Initializing";
+            _aSyncTask = Task.Run(() => Thread.Sleep(3000));
+            try
+            {
+                _aSyncTask.Wait(3500);
+                bool completed = _aSyncTask.IsCompleted;
+                AsyncProgressLbl.Text = $"Task A completed: {completed.ToString()}, Status: {_aSyncTask.Status.ToString()}";
+                if (!completed)
+                {
+                    AsyncProgressLbl.Text = $"Task A not completed";
+                }
+            }
+            catch (AggregateException)
+            {
+                Console.WriteLine("Exception in taskA.");
+            }
         }
 
         #endregion
